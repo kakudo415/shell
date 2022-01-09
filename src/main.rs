@@ -1,3 +1,6 @@
+mod parser;
+mod executor;
+
 use std::io::{stdin, stdout, Write};
 
 fn main() {
@@ -11,6 +14,8 @@ fn main_loop() {
 
         let mut input = String::new();
         stdin().read_line(&mut input).expect("ERROR: read_line()");
-        println!("{}", input.trim());
+
+        let input = parser::parse(&input);
+        executor::execute(input);
     }
 }
